@@ -20,10 +20,10 @@
 //   </div>
 // `;
 
-function orientationAuslesen(ereignis: any): void {
-  let winkelAlpha: number = Math.round(ereignis.alpha * 100) / 100;
-  let winkelBeta: number = Math.round(ereignis.beta * 100) / 100;
-  let winkelGamma: number = Math.round(ereignis.gamma * 100) / 100;
+function orientationAuslesen(ereignis: DeviceOrientationEvent): void {
+  const winkelAlpha: number = Math.round(ereignis.alpha! * 1000) / 1000;
+  const winkelBeta: number = Math.round(ereignis.beta! * 1000) / 1000;
+  const winkelGamma: number = Math.round(ereignis.gamma! * 1000) / 1000;
 
   document.getElementById("datenAlpha")!.innerHTML = winkelAlpha.toString();
   document.getElementById("datenBeta")!.innerHTML = winkelBeta.toString();
@@ -32,17 +32,34 @@ function orientationAuslesen(ereignis: any): void {
     "rotate(" + winkelAlpha + "deg)";
 }
 
-function bewegungAuslesen(ereignis: any): void {
-  const beschleunigungX = ereignis.accelerationIncludingGravity.x;
-  const beschleunigungY = ereignis.accelerationIncludingGravity.y;
-  const beschleunigungZ = ereignis.accelerationIncludingGravity.z;
+function bewegungAuslesen(ereignis: DeviceMotionEvent): void {
+  const beschleunigungX: number =
+    Math.round(ereignis.accelerationIncludingGravity!.x! * 1000) / 1000;
+  const beschleunigungY: number =
+    Math.round(ereignis.accelerationIncludingGravity!.y! * 1000) / 1000;
+  const beschleunigungZ: number =
+    Math.round(ereignis.accelerationIncludingGravity!.z! * 1000) / 1000;
 
-  document.getElementById("accelX")!.innerHTML = beschleunigungX.toString();
-  document.getElementById("accelY")!.innerHTML = beschleunigungY.toString();
-  document.getElementById("accelZ")!.innerHTML = beschleunigungZ.toString();
+  document.getElementById("accelX")!.innerHTML = beschleunigungX!.toString();
+  document.getElementById("accelY")!.innerHTML = beschleunigungY!.toString();
+  document.getElementById("accelZ")!.innerHTML = beschleunigungZ!.toString();
 }
 
 window.onload = function () {
   window.addEventListener("deviceorientation", orientationAuslesen, false);
   window.addEventListener("devicemotion", bewegungAuslesen, false);
+  window.addEventListener("devicemotion", sprungDetection, false);
 };
+
+function sprungDetection(ereignis: DeviceMotionEvent): boolean {
+  // lesen von z-Beschleunigung
+  const beschleunigungZ: number = ereignis.accelerationIncludingGravity!.z!;
+  // falls z-B größer 12 so wird ein Sprung aktiviert => return true
+  if (beschleunigungZ > 12) {
+    document.getElementById("jump")!.innerHTML = "&#x1F534";
+    return true;
+  } else {
+    document.getElementById("jump")!.innerHTML = "&#x1F7E2";
+    return false;
+  }
+}
