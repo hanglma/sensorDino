@@ -1,7 +1,7 @@
 // vite.config.js
 export default {
   // config options
-  // root: "/sensorbird",
+  // root: "sensorBird",
   build: {
     outDir: "build",
   },
