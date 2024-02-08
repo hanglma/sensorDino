@@ -2,25 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/pictures/vite.svga" />
+    <link rel="icon" type="image" href="/assets/favicon--MZPDa4-.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-    <script type="module" crossorigin src="assets/index-uO9Fopux.js"></script>
+    <title>sensor Dino</title>
+    <script type="module" crossorigin src="/assets/index-pkyRlx5J.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-hegZ4rCg.css">
   </head>
   <body>
-    <div id="senorData">
-      <p>alpha: <span id="datenAlpha"></span></p>
-      <p>beta: <span id="datenBeta"></span></p>
-      <p>gamma: <span id="datenGamma"></span></p>
-      <img
-        id="kompass"
-        src="https://www.javascript-kurs.de/bilder/kompass.png"
-      />
-      <p>accelerationX: <span id="accelX"></span></p>
-      <p>accelerationY: <span id="accelY"></span></p>
-      <p>accelerationZ: <span id="accelZ"></span></p>
-      <p id="jump"></p>
+    <div id="sensorData">
+      <div id="orientation">
+        <p>alpha: <span id="datenAlpha"></span></p>
+        <p>beta: <span id="datenBeta"></span></p>
+        <p>gamma: <span id="datenGamma"></span></p>
+      </div>
+      <div id="motion">
+        <p>accelerationX: <span id="accelX"></span></p>
+        <p>accelerationY: <span id="accelY"></span></p>
+        <p>accelerationZ: <span id="accelZ"></span></p>
+      </div>
+      <div id="compass">
+        <img
+          id="kompass"
+          src="https://www.javascript-kurs.de/bilder/kompass.png"
+        />
+      </div>
     </div>
-    <div id="app"></div>
+    <div id="game">
+      <div id="lose"></div>
+      <div id="character"></div>
+      <div id="block"></div>
+    </div>
   </body>
 </html>
