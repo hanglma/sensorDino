@@ -42,7 +42,7 @@
   left: 40px;
 }
 
-.animate {
+.animateCharacter {
   animation: jump 500ms;
 }
 
@@ -68,6 +68,10 @@
   position: relative;
   top: 130px;
   left: 480px;
+  display: none;
+}
+
+.animateBlock {
   animation: move 1s infinite linear;
 }
 
@@ -87,4 +91,19 @@
   position: relative;
   top: 60px;
   left: 190px;
+}
+
+#start {
+  background-color: #242424;
+  color: white;
+  border-radius: 5px;
+  border-color: black;
+  position: relative;
+  margin: 10px;
+}
+
+#UI {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

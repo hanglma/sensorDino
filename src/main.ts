@@ -1,4 +1,7 @@
-// Orientations Sensoren auslesen
+// import { throttle } from "throttle-typescript";
+
+//* Sensoren Daten
+
 function orientationAuslesen(ereignis: DeviceOrientationEvent): void {
   const winkelAlpha: number = Math.round(ereignis.alpha! * 1000) / 1000;
   const winkelBeta: number = Math.round(ereignis.beta! * 1000) / 1000;
@@ -26,47 +29,99 @@ function bewegungAuslesen(ereignis: DeviceMotionEvent): void {
 
 // aufruf der Methode für Auslesung der Sensoren
 window.onload = function () {
+  // eventlistener für Ausrichtung des Geräts
   window.addEventListener("deviceorientation", orientationAuslesen, false);
+  // eventlistener für Bewgung
   window.addEventListener("devicemotion", bewegungAuslesen, false);
-  // window.addEventListener("devicemotion", jump, false);
+  // eventlistener für Tasteninput
   window.addEventListener("keypress", jumpSpace);
 };
+
+async function requestDeviceOrientation() {
+  if (typeof (DeviceMotionEvent as any).requestPermission === "function") {
+    // Handle iOS 13+ devices.
+    (DeviceMotionEvent as any)
+      .requestPermission()
+      .then((state: any) => {
+        if (state === "granted") {
+          window.addEventListener("devicemotion", jump);
+        } else {
+          console.error("Request to access the orientation was rejected");
+        }
+      })
+      .catch(console.error);
+  } else {
+    // Handle regular non iOS 13+ devices.
+    window.addEventListener("devicemotion", jump);
+  }
+}
 
 //* Sensor Dino Game :)
 
 let character = document.getElementById("character");
 let block = document.getElementById("block");
+let isDead: boolean = false;
+let score: number;
 
-/* function jump(ereignis: DeviceMotionEvent): void {
+const startButton: HTMLButtonElement = document.getElementById(
+  "start"
+) as HTMLButtonElement;
+startButton.addEventListener("click", () => {
+  startGame();
+  requestDeviceOrientation();
+  console.log("button clicked");
+});
+
+function setScore(points: number) {
+  score = points;
+  document.getElementById("score")!.innerHTML = points.toString();
+}
+
+function startGame() {
+  block?.classList.add("animateBlock");
+  block?.setAttribute("style", "display:block");
+  isDead = false;
+  setScore(0);
+  document.getElementById("lose")!.innerHTML = "";
+  document.getElementById("start")!.innerHTML = "Restart";
+  console.log("start");
+}
+
+function jump(ereignis: DeviceMotionEvent): void {
   // lesen von z-Beschleunigung
   const beschleunigungZ: number = ereignis.accelerationIncludingGravity!.z!;
-  // falls z-B größer 12 so wird ein Sprung aktiviert => return true
+  // falls z-B größer 12 wird ein Sprung aktiviert
   if (beschleunigungZ > 12) {
-    character?.classList.add("animate");
-    console.log("jump");
-  } else {
-    document.getElementById("jump")!.innerHTML = "&#x1F7E2";
-  }
-} */
-
-function jumpSpace(key: any) {
-  if ((key = "Space")) {
-    if (character?.classList.contains("animate") == false) {
-      character!.classList.add("animate");
+    if (character?.classList.contains("animateCharacter") == false) {
+      character!.classList.add("animateCharacter");
       setTimeout(function () {
-        character!.classList.remove("animate");
+        character!.classList.remove("animateCharacter");
       }, 550);
-      console.log(character?.classList);
     }
     if (isDead == true) {
-      window.location.reload();
+      startGame();
+      console.log("dead2");
     }
   }
 }
 
-let isDead: boolean = false;
+function jumpSpace(key: any) {
+  if ((key = "w")) {
+    if (character?.classList.contains("animateCharacter") == false) {
+      character!.classList.add("animateCharacter");
+      setTimeout(function () {
+        character!.classList.remove("animateCharacter");
+      }, 550);
+      console.log(key);
+    }
+    if (isDead == true) {
+      startGame();
+      console.log("dead");
+    }
+  }
+}
 
-let checkDead = setInterval(function () {
+setInterval(function checkDead() {
   let characterTop = parseInt(
     window.getComputedStyle(character as Element).getPropertyValue("top")
   );
@@ -75,8 +130,10 @@ let checkDead = setInterval(function () {
   );
   if (blockLeft > 40 && blockLeft < 60 && characterTop >= 130) {
     isDead = true;
-    block?.setAttribute("style", "animation: none");
+    block!.classList.remove("animateBlock");
     block?.setAttribute("style", "display: none");
     document.getElementById("lose")!.innerHTML = "YOU LOSE :(";
+  } else if (blockLeft > 40 && blockLeft < 60 && characterTop <= 130) {
+    setScore(score + 1);
   }
 }, 10);

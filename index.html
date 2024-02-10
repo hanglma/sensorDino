@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image" href="src/pictures/favicon.ico" />
     <link rel="stylesheet" href="src/style.css" />
+    <script type="module" src="src/main.ts"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sensor Dino</title>
   </head>
@@ -26,11 +27,14 @@
         />
       </div>
     </div>
+    <div id="UI">
+      <button id="start">Start Game</button>
+      <p>Score: <span id="score"></span></p>
+    </div>
     <div id="game">
       <div id="lose"></div>
       <div id="character"></div>
       <div id="block"></div>
     </div>
   </body>
-  <script type="module" src="src/main.ts"></script>
 </html>
