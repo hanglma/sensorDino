@@ -1,109 +1,109 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
 }
 
 #sensorData {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 10px;
 }
 
 #game {
-  width: 500px;
-  height: 200px;
-  border: 2px solid rgb(102, 102, 102);
-  overflow: hidden;
+	width: 500px;
+	height: 200px;
+	border: 2px solid rgb(102, 102, 102);
+	overflow: hidden;
 }
 
 #character {
-  width: 20px;
-  height: 50px;
-  background-color: gray;
-  position: relative;
-  top: 150px;
-  left: 40px;
+	width: 20px;
+	height: 50px;
+	position: relative;
+	top: 150px;
+	left: 40px;
+	background-color: grey;
 }
 
 .animateCharacter {
-  animation: jump 500ms;
+	animation: jump 500ms;
 }
 
 @keyframes jump {
-  0% {
-    top: 150px;
-  }
-  45% {
-    top: 100px;
-  }
-  55% {
-    top: 100px;
-  }
-  100% {
-    top: 150px;
-  }
+	0% {
+		top: 150px;
+	}
+	45% {
+		top: 100px;
+	}
+	55% {
+		top: 100px;
+	}
+	100% {
+		top: 150px;
+	}
 }
 
 #block {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(114, 78, 78);
-  position: relative;
-  top: 130px;
-  left: 480px;
-  display: none;
+	width: 20px;
+	height: 20px;
+	background-color: rgb(114, 78, 78);
+	position: relative;
+	top: 130px;
+	left: 480px;
+	display: none;
 }
 
 .animateBlock {
-  animation: move 1s infinite linear;
+	animation: move 1s infinite linear;
 }
 
 @keyframes move {
-  0% {
-    left: 480px;
-  }
-  100% {
-    left: -40px;
-  }
+	0% {
+		left: 480px;
+	}
+	100% {
+		left: -40px;
+	}
 }
 
 #lose {
-  color: red;
-  font-weight: bold;
-  font-size: 20px;
-  position: relative;
-  top: 60px;
-  left: 190px;
+	color: red;
+	font-weight: bold;
+	font-size: 20px;
+	position: relative;
+	top: 60px;
+	left: 190px;
 }
 
 #start {
-  background-color: #242424;
-  color: white;
-  border-radius: 5px;
-  border-color: black;
-  position: relative;
-  margin: 10px;
+	background-color: #242424;
+	color: white;
+	border-radius: 5px;
+	border-color: black;
+	position: relative;
+	margin: 10px;
 }
 
 #UI {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }

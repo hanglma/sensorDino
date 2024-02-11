@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image" href="src/pictures/favicon.ico" />
-    <link rel="stylesheet" href="src/style.css" />
-    <script type="module" src="src/main.ts"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sensor Dino</title>
-  </head>
-  <body>
-    <div id="sensorData">
-      <div id="orientation">
-        <p>alpha: <span id="datenAlpha"></span></p>
-        <p>beta: <span id="datenBeta"></span></p>
-        <p>gamma: <span id="datenGamma"></span></p>
-      </div>
-      <div id="motion">
-        <p>accelerationX: <span id="accelX"></span></p>
-        <p>accelerationY: <span id="accelY"></span></p>
-        <p>accelerationZ: <span id="accelZ"></span></p>
-      </div>
-      <div id="compass">
-        <img
-          id="kompass"
-          src="https://www.javascript-kurs.de/bilder/kompass.png"
-        />
-      </div>
-    </div>
-    <div id="UI">
-      <button id="start">Start Game</button>
-      <p>Score: <span id="score"></span></p>
-    </div>
-    <div id="game">
-      <div id="lose"></div>
-      <div id="character"></div>
-      <div id="block"></div>
-    </div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image" href="src/pictures/favicon.ico" />
+		<link rel="stylesheet" href="src/style.css" />
+		<script type="module" src="src/main.ts"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>sensor Dino</title>
+	</head>
+	<body>
+		<div id="sensorData">
+			<div id="orientation">
+				<p>alpha: <span id="datenAlpha"></span></p>
+				<p>beta: <span id="datenBeta"></span></p>
+				<p>gamma: <span id="datenGamma"></span></p>
+			</div>
+			<div id="motion">
+				<p>accelerationX: <span id="accelX"></span></p>
+				<p>accelerationY: <span id="accelY"></span></p>
+				<p>accelerationZ: <span id="accelZ"></span></p>
+			</div>
+			<div id="compass">
+				<img id="kompass" src="https://www.javascript-kurs.de/bilder/kompass.png" />
+			</div>
+		</div>
+		<div id="UI">
+			<button id="start" onkeyup="event.preventDefault()">Start Game</button>
+			<p>Score: <span id="score"></span></p>
+		</div>
+		<div id="game">
+			<div id="lose"></div>
+			<div id="character"></div>
+			<div id="block"></div>
+		</div>
+	</body>
 </html>
