@@ -59,6 +59,7 @@ let character = document.getElementById('character');
 let block = document.getElementById('block');
 let isDead: boolean = true;
 const score = createScore(0, document.getElementById('score')!);
+score.reset();
 
 const startButton: HTMLButtonElement = document.getElementById('start') as HTMLButtonElement;
 startButton.addEventListener('click', () => {
@@ -87,8 +88,8 @@ const jump = (ereignis: DeviceMotionEvent): void => {
 	}
 };
 
-const jumpSpace = (key: any) => {
-	if (key === 'Space') {
+const jumpSpace = (key: KeyboardEvent) => {
+	if (key.code === 'Space') {
 		if (character?.classList.contains('animateCharacter') == false) {
 			character!.classList.add('animateCharacter');
 			setTimeout(() => character!.classList.remove('animateCharacter'), 550);
@@ -96,7 +97,9 @@ const jumpSpace = (key: any) => {
 		if (isDead) {
 			startGame();
 		}
+		console.log('jump');
 	}
+	console.log(key);
 };
 
 setInterval(() => {

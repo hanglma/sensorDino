@@ -3,12 +3,15 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image" href="src/pictures/favicon.ico" />
-		<link rel="stylesheet" href="src/style.css" />
-		<script type="module" src="src/main.ts"></script>
+		<link rel="stylesheet" href="src/styles/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>sensor Dino</title>
 	</head>
 	<body>
+		<div class="topnav">
+			<a href="/src/pages/index.html" class="active">Dino</a>
+			<a href="/src/pages/circle.html">Circles</a>
+		</div>
 		<div id="sensorData">
 			<div id="orientation">
 				<p>alpha: <span id="datenAlpha"></span></p>
@@ -29,9 +32,12 @@
 			<p>Score: <span id="score"></span></p>
 		</div>
 		<div id="game">
-			<div id="lose"></div>
-			<div id="character"></div>
-			<div id="block"></div>
+			<div id="playground">
+				<div id="lose"></div>
+				<div id="character"></div>
+				<div id="block"></div>
+			</div>
 		</div>
+		<script type="module" src="src/script/main.ts"></script>
 	</body>
 </html>
